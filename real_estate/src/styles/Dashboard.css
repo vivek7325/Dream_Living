@@ -1,0 +1,54 @@
+/* SellerDashboard.css */
+
+.seller-dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #555;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.main-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Additional styles for specific sections */
+#create-category,
+#manage-products,
+#view-orders {
+  margin-top: 40px;
+}
+
+#create-category h3,
+#manage-products h3,
+#view-orders h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
