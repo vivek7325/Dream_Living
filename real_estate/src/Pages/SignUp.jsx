@@ -48,18 +48,19 @@ const SignUp = () => {
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <form onSubmit={handleSubmit}>
                     {/* <input type="text" name="user_id" placeholder="User ID" value={formData.user_id} onChange={handleChange} /> */}
+                    
                     {/* <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} /> */}
-                    <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-                    <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-                    <select value={formData.role} onChange={handleChange}>
+                    <input type="text" name="full_name" placeholder="Full Name" value={formData.full_name} className="search_input"onChange={handleChange} />
+                    <input type="email" name="email" placeholder="Email" value={formData.email} className="search_input"onChange={handleChange} />
+                    <input type="password" name="password" placeholder="Password" value={formData.password} className="search_input"onChange={handleChange} />
+                    <select value={formData.role} className="search_input"onChange={handleChange}>
                         <option value="seller">Seller</option>
                         <option value="buyer">Buyer</option>
                     </select>
-                    <input type="text" name="full_name" placeholder="Full Name" value={formData.full_name} onChange={handleChange} />
-                    <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
-                    <input type="text" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
-                    <input type="text" name="bio" placeholder="Bio" value={formData.bio} onChange={handleChange} />
-                    <button type="submit">Sign Up</button>
+                    <input type="text" name="address" placeholder="Address" value={formData.address} className="search_input"onChange={handleChange} />
+                    <input type="text" name="phone" placeholder="Phone" value={formData.phone} className="search_input"onChange={handleChange} />
+                    <input type="text" name="bio" placeholder="Bio" value={formData.bio} className="search_input"onChange={handleChange} />
+                    <button type="submit" className='button'>Sign Up</button>
                 </form>
 
                 <div>

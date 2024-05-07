@@ -1,4 +1,4 @@
-/* login.css */
+
 
 .login-main {
     display: flex;
@@ -28,14 +28,7 @@
     flex-direction: column;
   }
   
-  .login-center input[type="email"],
-  .login-center input[type="password"],
-  .login-center select {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+  
   
   .login-center .pass-input-div {
     position: relative;
@@ -49,18 +42,6 @@
     cursor: pointer;
   }
   
-  .login-center-buttons button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-center-buttons button:hover {
-    background-color: #0056b3;
-  }
   
   .remember-div {
     margin-top: 10px;
@@ -70,5 +51,5 @@
     margin-left: 5px;
   }
   
-  /* Add more styles as needed */
+  
   

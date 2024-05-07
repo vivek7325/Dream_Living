@@ -43,6 +43,7 @@ header h1 span:last-child {
   border-radius: 15px;
   font-size: 17px;
   width: 200px;
+  margin-bottom: 9px;
 }
 
 
@@ -112,3 +113,35 @@ li.active {
   color: #494a42;
   
 }
+.listing_section{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.listing_section_left {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  /* justify-content:space-between ; */
+  width: 40%;
+}
+
+.listing_section_right {
+  margin-right: auto; 
+  width: 40%;
+}
+
+.button{
+  color: #5c5c53;
+  background-color: transparent;
+  padding: 10px 10px;
+  width: auto;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+
+

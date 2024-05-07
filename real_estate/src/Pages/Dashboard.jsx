@@ -43,7 +43,7 @@ const Dashboard = () => {
         <h2>Action</h2>
         <ul>
           <li><a href="#create-category">Create Category</a></li>
-          <li><a href="#manage-products">Manage Products</a></li>
+          <li><a href="#manage-products">Manage Listing</a></li>
           <li className='list-group-item'>
             <Link className='nav-link' to='/admin/orders'>
               <i className="bi bi-journal-check"></i> View Orders

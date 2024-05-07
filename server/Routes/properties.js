@@ -3,7 +3,7 @@ import con from "../utils/db.js";
 import multer from "multer";
 import path from "path";
 
-const seller = express.Router();
+const properties = express.Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,7 +23,7 @@ const gallery = multer({
 
 });
 
-seller.post('/properties/create', gallery.array('gallery', 6), (req, res) => {
+properties.post('/properties/create', gallery.array('gallery', 6), (req, res) => {
     
     const { title, address, price, bedrooms,
         bathrooms, type, status, parking,
@@ -46,7 +46,7 @@ seller.post('/properties/create', gallery.array('gallery', 6), (req, res) => {
     })
 });
 
-seller.get('/get_properties/', (req, res) => {
+properties.get('/get_properties/', (req, res) => {
     const ID = req.params.id;
     console.log(ID);
     const sql = `SELECT * FROM properties`;
@@ -60,7 +60,7 @@ seller.get('/get_properties/', (req, res) => {
 
 });
 
-seller.get('/get_properties/:id', (req, res) => {
+properties.get('/get_properties/:id', (req, res) => {
     const ID = req.params.id;
     console.log(ID);
     const sql = `SELECT * FROM properties WHERE id = ?`;
@@ -74,7 +74,7 @@ seller.get('/get_properties/:id', (req, res) => {
 
 });
 
-seller.put('/edit_properties/:id', (req, res) => {
+properties.put('/edit_properties/:id', (req, res) => {
     const ID = req.params.id;
     console.log(ID);
     const sql = `SELECT * FROM properties WHERE id = ?`;
@@ -99,7 +99,7 @@ seller.put('/edit_properties/:id', (req, res) => {
     });
 });
 
-seller.delete('/delete_properties/:id', (req, res) => {
+properties.delete('/delete_properties/:id', (req, res) => {
     const ID = req.params.id;
     console.log(ID);
     const sql = `SELECT * FROM properties WHERE id = ?`;
@@ -124,4 +124,4 @@ seller.delete('/delete_properties/:id', (req, res) => {
 
 
 
-export default seller;
+export default properties;

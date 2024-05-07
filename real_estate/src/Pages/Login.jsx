@@ -100,10 +100,10 @@ const Login = () => {
           </div>
 
           <div className="login-center-buttons">
-            <button type="submit">Login</button>
+            <button type="submit" className='button'>Login</button>
           </div>
           <div className="login-center-options">
-            <p>Don't have an account? <Link to="/">Sign Up</Link></p>
+            <p>Don't have an account? <Link to="/SignUp">Sign Up</Link></p>
           </div>
         </form>
       </div>

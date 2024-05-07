@@ -1,224 +1,189 @@
-import React from 'react'
+import React, { useState } from "react";
 
-function CreateListening() {
+const CreateListing = () => {
+  const [Data, setData] = useState({
+    title: "",
+    address: "",
+    price: "",
+    bedrooms: "",
+    bathrooms: "",
+    type: "house",
+    status: "available",
+    parking: false,
+    furnished: false,
+    filename: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked, files } = e.target;
+
+    if (type === "checkbox") {
+      setData((Data) => ({
+        ...Data,
+        [name]: checked,
+      }));
+    }
+    else if (type === "file") {
+      setData((Data) => ({
+        ...Data,
+        [name]: files[0],
+      }));
+    } else {
+      setData((Data) => ({
+        ...Data,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(Data);
+  };
+
   return (
-    <main className="p-3 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">
-        Create a Listing
-      </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-        {/* LEFT SIDE */}
-        <div className="flex flex-col gap-4 flex-1">
-          <input
-            type="text"
-            placeholder="Name"
-            className="border p-3 rounded-lg"
-            id="name"
-            maxLength="62"
-            minLength="10"
-            required
-            onChange={handleChange}
-            value={formData.name}
-          />
-          <textarea
-            type="text"
-            placeholder="Description"
-            className="border p-3 rounded-lg"
-            id="description"
-            required
-            onChange={handleChange}
-            value={formData.description}
-          />
-          <input
-            type="text"
-            placeholder="Address"
-            className="border p-3 rounded-lg"
-            id="address"
-            required
-            onChange={handleChange}
-            value={formData.address}
-          />
-          <div className="flex gap-6 flex-wrap">
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="sale"
-                className="w-5"
-                onChange={handleChange}
-                checked={formData.type === "sale"}
-              />
-              <span>Sell</span>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="rent"
-                className="w-5"
-                onChange={handleChange}
-                checked={formData.type === "rent"}
-              />
-              <span>Rent</span>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="parking"
-                className="w-5"
-                onChange={handleChange}
-                checked={formData.parking}
-              />
-              <span>Parking spot</span>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="furnished"
-                className="w-5"
-                onChange={handleChange}
-                checked={formData.furnished}
-              />
-              <span>Furnished</span>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="offer"
-                className="w-5"
-                onChange={handleChange}
-                checked={formData.offer}
-              />
-              <span>Offer</span>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-6">
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                id="bedrooms"
-                min="1"
-                max="10"
-                required
-                className="p-3 border border-gray-300 rounded-lg"
-                onChange={handleChange}
-                value={formData.bedrooms}
-              />
-              <p>Beds</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                id="bathrooms"
-                min="1"
-                max="10"
-                required
-                className="p-3 border border-gray-300 rounded-lg"
-                onChange={handleChange}
-                value={formData.bathrooms}
-              />
-              <p>Baths</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                id="regularPrice"
-                min="50"
-                max="10000000"
-                required
-                className="p-3 border border-gray-300 rounded-lg"
-                onChange={handleChange}
-                value={formData.regularPrice}
-              />
-              <div className="flex flex-col items-center">
-                <p>Regular price</p>
-                {formData.type === "rent" && (
-                  <span className="text-xs">($ / month)</span>
-                )}
-              </div>
-            </div>
-            {formData.offer && (
-              <div className="flex items-center gap-2">
-                <input
-                  type="number"
-                  id="discountPrice"
-                  min="0"
-                  max="10000000"
-                  required
-                  className="p-3 border border-gray-300 rounded-lg"
-                  onChange={handleChange}
-                  value={formData.discountPrice}
-                />
-                <div className="flex flex-col items-center">
-                  <p>Discounted price</p>
+    <div className="listing_section">
+      <div className="listing_section_left">
+        <div className="listing_section_title"><h2>Create New Listing</h2></div>
+        <form className="listing_Form" onSubmit={handleSubmit}>
 
-                  {formData.type === "rent" && (
-                    <span className="text-xs">($ / month)</span>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        {/* RIGHT */}
-        <div className="flex flex-col flex-1 gap-4">
-          <p className="font-semibold">
-            Images:
-            <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 6)
-            </span>
-          </p>
-          <div className="flex gap-4">
+          <div>
             <input
-              onChange={(e) => setFiles(e.target.files)}
-              className="p-3 border border-gray-300 rounded w-full"
-              type="file"
-              id="images"
-              accept="image/*"
-              multiple
+              type="text"
+              name="title"
+              value={Data.title}
+              onChange={handleChange}
+              className='search_input'
+              placeholder="Title"
             />
-            <button
-              type="button"
-              disabled={uploading}
-              onClick={handleImageSubmit}
-              className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80"
-            >
-              {uploading ? "Uploading..." : "Upload"}
-            </button>
           </div>
-          <p className="text-red-700 text-sm">
-            {imageUploadError && imageUploadError}
-          </p>
-          {formData.imageUrls.length > 0 &&
-            formData.imageUrls.map((url, index) => (
-              <div
-                key={url}
-                className="flex justify-between p-3 border items-center"
-              >
-                <img
-                  src={url}
-                  alt="listing image"
-                  className="w-20 h-20 object-contain rounded-lg"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveImage(index)}
-                  className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75"
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-          <button
-            disabled={loading || uploading}
-            className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
-          >
-            {loading ? "Creating..." : "Create listing"}
-          </button>
-          {error && <p className="text-red-700 text-sm">{error}</p>}
-        </div>
-      </form>
-    </main>
-  );
 
+          <div>
+            <input
+              type="text"
+              name="address"
+              value={Data.address}
+              onChange={handleChange}
+              className='search_input'
+              placeholder="Address"
+            />
+
+          </div>
+
+
+          <div>
+            <input
+              type="number"
+              name="price"
+              min="50"
+              max="10000000"
+              value={Data.price}
+              onChange={handleChange}
+              className='search_input'
+              placeholder="Price (in Rupees)"
+            />
+          </div>
+
+
+          <div>
+            <input
+              type="number"
+              name="bedrooms"
+              min="1"
+              max="10"
+              value={Data.bedrooms}
+              onChange={handleChange}
+              className='search_input'
+              placeholder="Bedrooms"
+            />
+
+          </div>
+
+
+          <div>
+            <input
+              type="number"
+              name="bathrooms"
+              min="1"
+              max="10"
+              value={Data.bathrooms}
+              onChange={handleChange}
+              className='search_input'
+              placeholder="Bathrooms"
+            />
+          </div>
+
+
+          <div>
+            <select name="type" className="search_input" style={{ width: '200px' }} value={Data.type} onChange={handleChange}>
+              <option value="house">House</option>
+              <option value="apartment">Apartment</option>
+              <option value="plot">Plot</option>
+              <option value="commercial">Commercial</option>
+            </select>
+          </div>
+
+
+          <div>
+            <select name="status" className="search_input" style={{ width: '200px' }} value={Data.status} onChange={handleChange}>
+              <option value="available">Available</option>
+              <option value="sold">Sold</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Parking:</label>
+            <input
+              type="checkbox"
+              name="parking"
+              checked={Data.parking}
+              onChange={handleChange}
+              className='search_input'
+            />
+          </div>
+
+
+          <div>
+            <label>Furnished:</label>
+            <input
+              type="checkbox"
+              name="furnished"
+              checked={Data.furnished}
+              onChange={handleChange}
+              className='search_input'
+            />
+          </div>
+
+
+
+
+        </form>
+
+      </div>
+      <div className="listing_section_right">
+        <h3>
+          Images:
+        </h3>
+        <span>
+          First image will be cover (max 6)
+        </span>
+        <br></br>
+        <input
+          type="file"
+          name="filename"
+          value={Data.filename}
+          onChange={handleChange}
+        />
+
+        <button type="submit" className="button">Create Listing</button>
+      </div>
+      <form>
+
+      </form>
+    </div>
+
+  );
 }
 
-export default CreateListening
+export default CreateListing;
